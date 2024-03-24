@@ -15,7 +15,6 @@
 		E48F42202BAF6DA400C20A1C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F421F2BAF6DA400C20A1C /* ContactViewController.swift */; };
 		E48F42222BAF6DBD00C20A1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F42212BAF6DBD00C20A1C /* MapViewController.swift */; };
 		E48F42242BAF6DD100C20A1C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F42232BAF6DD100C20A1C /* SettingsViewController.swift */; };
-		E48F422A2BAFC4BE00C20A1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F42292BAFC4BE00C20A1C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		E48F421F2BAF6DA400C20A1C /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		E48F42212BAF6DBD00C20A1C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E48F42232BAF6DD100C20A1C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E48F42292BAFC4BE00C20A1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,16 +44,7 @@
 		E48F41FF2BABC6A900C20A1C = {
 			isa = PBXGroup;
 			children = (
-				E48F420B2BABC6A900C20A1C /* AppDelegate.swift */,
-				E48F42292BAFC4BE00C20A1C /* Constants.swift */,
-				E48F421F2BAF6DA400C20A1C /* ContactViewController.swift */,
-				E48F42212BAF6DBD00C20A1C /* MapViewController.swift */,
-				E48F420D2BABC6A900C20A1C /* SceneDelegate.swift */,
-				E48F42232BAF6DD100C20A1C /* SettingsViewController.swift */,
-				E48F42112BABC6A900C20A1C /* Main.storyboard */,
-				E48F42142BABC6C300C20A1C /* Assets.xcassets */,
-				E48F42162BABC6C300C20A1C /* LaunchScreen.storyboard */,
-				E48F42192BABC6C300C20A1C /* Info.plist */,
+				E48F420A2BABC6A900C20A1C /* My Contact List */,
 				E48F42092BABC6A900C20A1C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +55,22 @@
 				E48F42082BABC6A900C20A1C /* My Contact List.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E48F420A2BABC6A900C20A1C /* My Contact List */ = {
+			isa = PBXGroup;
+			children = (
+				E48F420B2BABC6A900C20A1C /* AppDelegate.swift */,
+				E48F420D2BABC6A900C20A1C /* SceneDelegate.swift */,
+				E48F42112BABC6A900C20A1C /* Main.storyboard */,
+				E48F42142BABC6C300C20A1C /* Assets.xcassets */,
+				E48F42162BABC6C300C20A1C /* LaunchScreen.storyboard */,
+				E48F42192BABC6C300C20A1C /* Info.plist */,
+				E48F421F2BAF6DA400C20A1C /* ContactViewController.swift */,
+				E48F42212BAF6DBD00C20A1C /* MapViewController.swift */,
+				E48F42232BAF6DD100C20A1C /* SettingsViewController.swift */,
+			);
+			path = "My Contact List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +149,6 @@
 				E48F42222BAF6DBD00C20A1C /* MapViewController.swift in Sources */,
 				E48F420E2BABC6A900C20A1C /* SceneDelegate.swift in Sources */,
 				E48F42242BAF6DD100C20A1C /* SettingsViewController.swift in Sources */,
-				E48F422A2BAFC4BE00C20A1C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
