@@ -17,14 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5Xh-2f-Kkf">
-                                <rect key="frame" x="147" y="59" width="99" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="BYZ-38-t0r" eventType="valueChanged" id="jfd-96-mB7"/>
+                                </connections>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zts-3m-49q">
-                                <rect key="frame" x="0.0" y="105" width="393" height="664"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Zts-3m-49q">
+                                <rect key="frame" x="0.0" y="149" width="393" height="620"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="sZR-G0-U79">
                                         <rect key="frame" x="8" y="0.0" width="373" height="307.66666666666669"/>
@@ -162,6 +165,9 @@
                                                         <rect key="frame" x="251" y="0.0" width="122" height="34.333333333333336"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Change"/>
+                                                        <connections>
+                                                            <segue destination="gUx-Mx-oNO" kind="show" id="jOe-FR-M9p"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -191,11 +197,51 @@
                             <constraint firstItem="5Xh-2f-Kkf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g3Y-fM-7lN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="dC3-ci-OQk"/>
+                    <navigationItem key="navigationItem" title="Contact" id="uDo-u9-LQi"/>
+                    <connections>
+                        <outlet property="btnChange" destination="AEb-fC-3JW" id="geb-d0-TGt"/>
+                        <outlet property="lblBirthdate" destination="KGj-6A-S1a" id="gyY-Mj-Sd1"/>
+                        <outlet property="scrollView" destination="Zts-3m-49q" id="rHm-M6-BjS"/>
+                        <outlet property="sgmtEditMode" destination="5Xh-2f-Kkf" id="qtx-Bs-hBJ"/>
+                        <outlet property="txtAddress" destination="dZy-hl-sQk" id="6IN-qu-EFF"/>
+                        <outlet property="txtCell" destination="Ocn-Y7-6qE" id="aRt-8d-eac"/>
+                        <outlet property="txtCity" destination="UYT-RV-Osc" id="OhD-IM-SvA"/>
+                        <outlet property="txtEmail" destination="6KV-Qy-OrL" id="vyt-op-zhj"/>
+                        <outlet property="txtName" destination="YxP-3t-hqM" id="Eyu-Lt-XRl"/>
+                        <outlet property="txtPhone" destination="Oms-ch-q3x" id="bz8-wZ-SEY"/>
+                        <outlet property="txtState" destination="YBG-Mk-c40" id="nDH-Pa-c9h"/>
+                        <outlet property="txtZip" destination="DLV-z8-HJ1" id="ebA-QU-mXC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="387"/>
+            <point key="canvasLocation" x="703" y="-358"/>
+        </scene>
+        <!--Birthdate-->
+        <scene sceneID="LKV-JL-RZf">
+            <objects>
+                <viewController title="Birthdate" id="gUx-Mx-oNO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QMy-p8-ch7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Hcx-MF-ZIG">
+                                <rect key="frame" x="0.0" y="103" width="393" height="34.333333333333343"/>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GRr-Wz-5qH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GRr-Wz-5qH" firstAttribute="trailing" secondItem="Hcx-MF-ZIG" secondAttribute="trailing" id="82d-Cy-x5t"/>
+                            <constraint firstItem="Hcx-MF-ZIG" firstAttribute="top" secondItem="GRr-Wz-5qH" secondAttribute="top" id="ABU-3K-ZH9"/>
+                            <constraint firstItem="Hcx-MF-ZIG" firstAttribute="leading" secondItem="GRr-Wz-5qH" secondAttribute="leading" id="tmw-aJ-MVL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NiN-U2-cCm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gyU-TE-BwQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1539.6946564885495" y="-358.45070422535213"/>
         </scene>
         <!--Map-->
         <scene sceneID="Ziv-Yk-vjF">
@@ -220,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3O-rH-q74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-292" y="388"/>
+            <point key="canvasLocation" x="-1005" y="387"/>
         </scene>
         <!--Settings-->
         <scene sceneID="F6I-Il-M8Q">
@@ -245,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CE2-r9-N8N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="387"/>
+            <point key="canvasLocation" x="-158" y="387"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pNm-4v-S0q">
@@ -258,14 +304,33 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qxS-Km-w2t"/>
+                        <segue destination="mfp-Br-eSI" kind="relationship" relationship="viewControllers" id="qxS-Km-w2t"/>
                         <segue destination="wlA-9q-1DO" kind="relationship" relationship="viewControllers" id="QJm-tQ-FYs"/>
                         <segue destination="wbj-jL-iCS" kind="relationship" relationship="viewControllers" id="JTV-gD-4Bj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jC5-86-DQt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-292" y="-354"/>
+            <point key="canvasLocation" x="-1005" y="-358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0J2-mk-QYR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mfp-Br-eSI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="dC3-ci-OQk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jfa-0f-dRv">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="y4a-eK-Ow9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s8C-Vi-vV7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-158" y="-358"/>
         </scene>
     </scenes>
     <resources>
