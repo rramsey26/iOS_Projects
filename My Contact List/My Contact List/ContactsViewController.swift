@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
-class ContactViewController: UIViewController {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+           
+    var currentContact: Contact?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var txtName: UITextField!
@@ -26,6 +30,51 @@ class ContactViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.changeEditMode(self)
+        
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtCell, txtPhone, txtEmail]
+        for textField in textFields {
+            textField.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
+        }
+    }
+    
+    func dateChanged(date: Date) {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.birthday = date
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        lblBirthdate.text = formatter.string(from: date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueContactDate") {
+            let dateController = segue.destination as! DateViewController
+            dateController.delegate = self
+        }
+    }
+    
+    func textFieldShouldEndEditing (_ textField: UITextField) -> Bool {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.contactName = txtName.text
+        currentContact?.streetAddress = txtAddress.text
+        currentContact?.city = txtCity.text
+        currentContact?.state = txtState.text
+        currentContact?.zipCode = txtZip.text
+        currentContact?.cellNumber = txtCell.text
+        currentContact?.phoneNumber = txtPhone.text
+        currentContact?.email = txtEmail.text
+        return true
+    }
+    
+    @objc func saveContact() {
+        appDelegate.saveContext()
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
@@ -36,6 +85,7 @@ class ContactViewController: UIViewController {
                 textField.borderStyle = UITextField.BorderStyle.none
             }
             btnChange.isHidden = true
+            navigationItem.rightBarButtonItem = nil
         }
         else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
@@ -43,6 +93,7 @@ class ContactViewController: UIViewController {
                 textField.borderStyle = UITextField.BorderStyle.roundedRect
             }
             btnChange.isHidden = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(self.saveContact))
         }
     }
     
@@ -59,8 +110,8 @@ class ContactViewController: UIViewController {
     }
     
     func registerKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(ContactViewController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ContactViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ContactsViewController.keyboardDidShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ContactsViewController.keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unregisterKeyboardNotifications() {

@@ -11,7 +11,7 @@
         <!--Contacts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Contacts" id="BYZ-38-t0r" customClass="ContactViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Contacts" id="BYZ-38-t0r" customClass="ContactsViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +166,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Change"/>
                                                         <connections>
-                                                            <segue destination="gUx-Mx-oNO" kind="show" id="jOe-FR-M9p"/>
+                                                            <segue destination="gUx-Mx-oNO" kind="show" identifier="segueContactDate" id="jOe-FR-M9p"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -220,7 +220,7 @@
         <!--Birthdate-->
         <scene sceneID="LKV-JL-RZf">
             <objects>
-                <viewController title="Birthdate" id="gUx-Mx-oNO" sceneMemberID="viewController">
+                <viewController title="Birthdate" id="gUx-Mx-oNO" customClass="DateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMy-p8-ch7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -238,6 +238,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NiN-U2-cCm"/>
+                    <connections>
+                        <outlet property="dtpDate" destination="Hcx-MF-ZIG" id="FXe-bJ-wsC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyU-TE-BwQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
