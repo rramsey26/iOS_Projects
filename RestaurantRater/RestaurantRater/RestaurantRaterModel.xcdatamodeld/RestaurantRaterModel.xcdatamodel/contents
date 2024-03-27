@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Entree" representedClassName="Entree" syncable="YES" codeGenerationType="class">
+    <entity name="EntreeEntity" representedClassName="EntreeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="String"/>
         <attribute name="restaurant" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="relationship" maxCount="1" deletionRule="Nullify" destinationEntity="Entree" inverseName="relationship" inverseEntity="Entree"/>
+        <relationship name="restaurants" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="entrees" inverseEntity="RestaurantEntity"/>
     </entity>
-    <entity name="Restaurant" representedClassName="Restaurant" syncable="YES" codeGenerationType="class">
+    <entity name="RestaurantEntity" representedClassName="RestaurantEntity" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="zipCode" optional="YES" attributeType="String"/>
+        <relationship name="entrees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EntreeEntity" inverseName="restaurants" inverseEntity="EntreeEntity"/>
     </entity>
 </model>

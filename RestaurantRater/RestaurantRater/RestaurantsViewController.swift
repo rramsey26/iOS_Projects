@@ -8,13 +8,9 @@
 import UIKit
 import CoreData
 
-protocol RestaurantControllerDelegate: class {
-    func rateEntree(restaurantName: String)
-}
-
 class RestaurantsViewController: UIViewController, UITextFieldDelegate {
-    weak var delegate: RestaurantControllerDelegate?
-    var currentRestaurant: Restaurant?
+
+    var currentRestaurant: RestaurantEntity?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
    
     @IBOutlet weak var txtName: UITextField!
@@ -32,17 +28,23 @@ class RestaurantsViewController: UIViewController, UITextFieldDelegate {
         for textField in textFields {
             textField.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
         }
-        let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveRestaurant))
-        self.navigationItem.rightBarButtonItem = saveButton
+//        let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveRestaurant))
+//        self.navigationItem.rightBarButtonItem = saveButton
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(saveRestaurant))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(saveRestaurant))
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueRateEntree") {
+            let entreeController = segue.destination as! EntreesViewController;
+            entreeController.restaurantName = txtName.text!
+        }
+    }
     
     func textFieldShouldEndEditing (_ textField: UITextField) -> Bool {
         if currentRestaurant == nil {
             let context = appDelegate.persistentContainer.viewContext
-            currentRestaurant = Restaurant(context: context)
+            currentRestaurant = RestaurantEntity(context: context)
         }
         currentRestaurant?.name = txtName.text
         currentRestaurant?.address = txtAddress.text
@@ -54,7 +56,6 @@ class RestaurantsViewController: UIViewController, UITextFieldDelegate {
     
     @objc func saveRestaurant() {
         appDelegate.saveContext()
-        self.delegate?.rateEntree(restaurantName: txtName.text!)
     }
     
 

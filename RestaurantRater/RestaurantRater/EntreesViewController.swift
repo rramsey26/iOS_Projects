@@ -8,23 +8,24 @@
 import UIKit
 import CoreData
 
-class EntreesViewController: UIViewController, UITextFieldDelegate, RestaurantControllerDelegate {
-       
+//class EntreesViewController: UIViewController, UITextFieldDelegate, RestaurantControllerDelegate {
+class EntreesViewController: UIViewController, UITextFieldDelegate {
     
-    var currentEntree: Entree?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var currentEntree: EntreeEntity?
+    let entreeAppDelegate = UIApplication.shared.delegate as! AppDelegate
+    var restaurantName: String = ""
 
     @IBOutlet weak var lblRestaurant: UILabel!
     @IBOutlet weak var txtEntree: UITextField!
     @IBOutlet weak var txtType: UITextField!
     @IBOutlet weak var txtRating: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.title = "Rate Entree"
+        rateEntree(restaurantName: restaurantName)
         
         let textFields: [UITextField] = [txtEntree, txtType, txtRating]
         for textField in textFields {
@@ -36,34 +37,29 @@ class EntreesViewController: UIViewController, UITextFieldDelegate, RestaurantCo
     
     func rateEntree(restaurantName: String) {
         if currentEntree == nil {
-            let context = appDelegate.persistentContainer.viewContext
-            currentEntree = Entree(context: context)
+            let context = entreeAppDelegate.persistentContainer.viewContext
+            currentEntree = EntreeEntity(context: context)
         }
         currentEntree?.restaurant = restaurantName
         lblRestaurant.text = restaurantName
-        print("/(restaurantName)")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "segueRateEntree") {
-            let restaurantController = segue.destination as! RestaurantsViewController
-            restaurantController.delegate = self
-        }
+        print(restaurantName)
     }
     
     func textFieldShouldEndEditing (_ textField: UITextField) -> Bool {
         if currentEntree == nil {
-            let context = appDelegate.persistentContainer.viewContext
-            currentEntree = Entree(context: context)
+            let context = entreeAppDelegate.persistentContainer.viewContext
+            currentEntree = EntreeEntity(context: context)
         }
         currentEntree?.name = txtEntree.text
         currentEntree?.type = txtType.text
         currentEntree?.rating = txtRating.text
+        print(txtRating.text)
+        print(currentEntree?.rating)
         return true
     }
     
     @objc func saveEntree() {
-        appDelegate.saveContext()
+        entreeAppDelegate.saveContext()
         self.navigationController?.popViewController(animated: true)
     }
     

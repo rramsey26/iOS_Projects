@@ -211,7 +211,7 @@
                     <connections>
                         <outlet property="lblRestaurant" destination="1Xz-gf-Czh" id="5c6-hv-rVJ"/>
                         <outlet property="txtEntree" destination="HiT-PQ-XCB" id="KZu-fx-IG9"/>
-                        <outlet property="txtRating" destination="ANY-fe-zi0" id="F0V-Jv-fwT"/>
+                        <outlet property="txtRating" destination="ANY-fe-zi0" id="cza-Yk-mDJ"/>
                         <outlet property="txtType" destination="xgZ-Cx-07u" id="Geg-iC-4dY"/>
                     </connections>
                 </viewController>
