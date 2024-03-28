@@ -8,7 +8,6 @@
 import UIKit
 import CoreData
 
-//class EntreesViewController: UIViewController, UITextFieldDelegate, RestaurantControllerDelegate {
 class EntreesViewController: UIViewController, UITextFieldDelegate {
     
     var currentEntree: EntreeEntity?
@@ -42,7 +41,6 @@ class EntreesViewController: UIViewController, UITextFieldDelegate {
         }
         currentEntree?.restaurant = restaurantName
         lblRestaurant.text = restaurantName
-        print(restaurantName)
     }
     
     func textFieldShouldEndEditing (_ textField: UITextField) -> Bool {
@@ -53,8 +51,6 @@ class EntreesViewController: UIViewController, UITextFieldDelegate {
         currentEntree?.name = txtEntree.text
         currentEntree?.type = txtType.text
         currentEntree?.rating = txtRating.text
-        print(txtRating.text)
-        print(currentEntree?.rating)
         return true
     }
     

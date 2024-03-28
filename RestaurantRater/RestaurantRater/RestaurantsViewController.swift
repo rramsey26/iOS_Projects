@@ -28,8 +28,6 @@ class RestaurantsViewController: UIViewController, UITextFieldDelegate {
         for textField in textFields {
             textField.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
         }
-//        let saveButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveRestaurant))
-//        self.navigationItem.rightBarButtonItem = saveButton
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(saveRestaurant))
     }
@@ -37,7 +35,10 @@ class RestaurantsViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueRateEntree") {
             let entreeController = segue.destination as! EntreesViewController;
-            entreeController.restaurantName = txtName.text!
+            
+            if txtName.text != nil {
+                entreeController.restaurantName = txtName.text!
+            }
         }
     }
     
